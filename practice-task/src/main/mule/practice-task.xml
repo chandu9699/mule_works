@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="f4035866-199b-4069-a283-4e721148746e" >
+		<http:listener-connection host="localhost" port="8080" />
+	</http:listener-config>
+	<flow name="practice-taskFlow" doc:id="44a64ddc-9c38-4927-9533-1e1dedb05d1e" >
+		<http:listener doc:name="Listener" doc:id="e08ab9d4-3f02-4231-ba19-d2782e47382f" config-ref="HTTP_Listener_config" path="/flow" allowedMethods="GET"/>
+		<logger level="INFO" doc:name="Logger" doc:id="0f359eca-1aa4-420a-a202-608c3b2b5eda" message="set payloade please"/>
+		<set-payload value="#['task successful']" doc:name="message" doc:id="fffc1020-6f05-4160-a18a-edae2b8fedfd" />
+	</flow>
+</mule>

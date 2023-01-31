@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="12b8bacc-3651-4f56-a8f8-f01994ed6e25" >
+		<http:listener-connection host="${http.host}" port="${http.port}" />
+	</http:listener-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="2f82c3f0-1ff3-41c1-92f3-1a430e02a49d" file="test.yaml" />
+	<flow name="property-fileFlow" doc:id="eda88e5c-a65c-4679-aaaa-d5f1e60bac59" >
+		<http:listener doc:name="Listener" doc:id="9fd05a3d-a8ea-49e5-b9f2-865b8dce8506" config-ref="HTTP_Listener_config" path="${http.path}"/>
+		<logger level="INFO" doc:name="Logger" doc:id="d257526f-829b-4d51-bbfd-fbf78607d363" message="hi this property file is very important and plays a main role in best practice"/>
+	</flow>
+</mule>

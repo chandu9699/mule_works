@@ -1,0 +1,9 @@
+[{
+			"name" : "mule"
+			"mail" : "chandu@gmail.com"
+		},
+		{
+			"name" : "soft"
+			"mail" : "noone@gmail.com"
+		}
+]

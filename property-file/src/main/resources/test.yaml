@@ -1,0 +1,4 @@
+http:
+  path: "property"
+  host: "localhost"
+  port: "8089"
