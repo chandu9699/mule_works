@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+	<flow name="scatter_gatherFlow1" doc:id="a98015ce-36f3-43cf-be8a-44e8ec62d574" >
+		<scheduler doc:name="Scheduler" doc:id="60ad6899-b327-483e-8db4-c61a88dd5eae" >
+			<scheduling-strategy >
+				<fixed-frequency frequency="1" timeUnit="MINUTES"/>
+			</scheduling-strategy>
+		</scheduler>
+		<logger level="INFO" doc:name="Logger" doc:id="617de719-97a7-4b53-9b11-abc34934a655" message="step  by step"/>
+		<scatter-gather doc:name="Scatter-Gather" doc:id="65fb7df3-cb33-4d6a-ac68-1be9f9daaf3c" >
+			<route >
+				<logger level="INFO" doc:name="Logger" doc:id="37e3f436-0476-4050-a7ff-574c25625f78" message="1 apple"/>
+			</route>
+			<route >
+				<logger level="INFO" doc:name="Logger" doc:id="9e3600a4-b59d-4eb3-81a8-89cf7098b039" message="2 apple"/>
+			</route>
+			<route >
+				<logger level="INFO" doc:name="Logger" doc:id="874af114-4c11-4569-ac2e-0858b96ec442" message="3 banana"/>
+			</route>
+			<route >
+				<logger level="INFO" doc:name="Logger" doc:id="b543fe89-66ae-4396-8200-fe52bff2bda5" message="4 banana"/>
+			</route>
+		</scatter-gather>
+		<logger level="INFO" doc:name="Logger" doc:id="65d6159d-6480-4c16-8077-a4da91bc613e" message="#[payload]"/>
+	</flow>
+</mule>
