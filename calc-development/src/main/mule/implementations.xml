@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<sub-flow name="multiplication-subflow" doc:id="90f99586-d774-4ea9-8d64-72a7d80843f1" >
+		<set-variable value="#[attributes.queryParams.number1]" doc:name="Set Variable" doc:id="576e5f3f-3db5-40a3-9fc9-8c7001a4a93a" variableName="number1"/>
+		<set-variable value="#[attributes.queryParams.number2]" doc:name="Set Variable" doc:id="670e4b3b-4d8a-4e2b-b96e-b319b08441b9" variableName="number2"/>
+		<ee:transform doc:name="Transform Message" doc:id="4090c5cf-6b4e-4dae-b569-6c6bd52f49bc" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	result : vars.number1 * vars.number2
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</sub-flow>
+	<sub-flow name="additionSub_Flow" doc:id="fd435d30-2f34-4580-8e7a-641de79d0901" >
+		<set-variable value="#[attributes.queryParams.number1]" doc:name="Set Variable" doc:id="66f7df5d-38dd-4c49-95a4-6be9daaa6a5f" variableName="number1"/>
+		<set-variable value="#[attributes.queryParams.number2]" doc:name="Set Variable" doc:id="d5640990-617d-4477-bff9-0970c2254099" variableName="number2"/>
+		<ee:transform doc:name="Transform Message" doc:id="a7f6e1d2-42a0-4e53-ab81-b9f3fea276e2" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	result : vars.number1 + vars.number2
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</sub-flow>
+	<sub-flow name="divisionSub_Flow" doc:id="330276c9-8e7c-4b34-acda-e5d419fae3fb" >
+		<set-variable value="#[attributes.queryParams.number1]" doc:name="Set Variable" doc:id="308019ca-cb17-465c-b37d-95fcc609369c" variableName="number1"/>
+		<set-variable value="#[attributes.queryParams.number2]" doc:name="Set Variable" doc:id="dac1bbfe-4dc0-49ff-9776-59edae4a964e" variableName="number2"/>
+		<ee:transform doc:name="Transform Message" doc:id="43c5dcb7-2509-478e-b6c9-a7d02ce5080b" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	result : vars.number1 / vars.number2
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</sub-flow>
+	<sub-flow name="subtractionSub_Flow" doc:id="3030164a-6e6d-40e7-b0a3-12cc67f1a86d" >
+		<set-variable value="#[attributes.queryParams.number1]" doc:name="Set Variable" doc:id="4a0f5ab9-62aa-4861-ae26-45798e0ac4f6" variableName="number1"/>
+		<set-variable value="#[attributes.queryParams.number2]" doc:name="Set Variable" doc:id="8f0e39a4-0856-44ba-9d38-1f1011041a92" variableName="number2"/>
+		<ee:transform doc:name="Transform Message" doc:id="c02abc21-01b4-4e00-ac4d-88f577337cb4" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	resuly : vars.number1 - vars.number2
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</sub-flow>
+</mule>
